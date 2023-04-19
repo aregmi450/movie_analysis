@@ -4,5 +4,4 @@ An explanatory data analysis of TV Shows in different OTT Platform on python usi
 
 Streamlit is used to show the output for movies sorted according to year and age group of the series it caters to. The following image is an example of the output recieved:
 
-![image](https://user-images.githubusercontent.com/46434570/233045278-a7f415a1-487a-491e-947b-63decc65a3f7.png)
-
+233045278-a7f415a1-487a-491e-947b-63decc65a3f7.png
