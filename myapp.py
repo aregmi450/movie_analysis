@@ -36,10 +36,3 @@ with col1:
         .groupby(['Title', 'Age'])['Year'].sum()
     dataframe_genre_year = dataframe_genre_year.reset_index()
     st.dataframe(dataframe_genre_year, width=400)
-
-# with col1:
-#     st.write("""#### Lists of movies filtered by year  """)
-#     year_list = movieRatings[year]\
-#         .groupby(['name', 'genre'])['year'].sum()
-#     year_list = year_list.reset_index()
-#     st.dataframe(year_list, width=400)
