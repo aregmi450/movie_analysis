@@ -10,7 +10,6 @@ import streamlit as st
 movieRatings = pd.read_csv("tv_shows.csv", index_col=[0])
 
 # Creating sidebar widget unique values from our movies dataset
-
 age_list = movieRatings['Age'].unique().tolist()
 year_list = movieRatings['Year'].unique().tolist()
 
@@ -28,10 +27,18 @@ new_genre_year = (movieRatings['Age'].isin(new_age_list)) \
     & (movieRatings['Year'] == year)
 
 # visualization
-col1, col2 = st.columns(2)
-with col1:
-    st.write("""#### Lists of movies filtered by Age Group and Release Year """)
-    dataframe_genre_year = movieRatings[new_genre_year]\
-        .groupby(['Title', 'Age'])['Year'].sum()
-    dataframe_genre_year = dataframe_genre_year.reset_index()
-    st.dataframe(dataframe_genre_year, width=400)
+
+st.write("""#### Lists of movies filtered by Age Group and Release Year """)
+dataframe_genre_year = movieRatings[new_genre_year]\
+    .groupby(['Title', 'Age'])['Year'].sum()
+dataframe_genre_year = dataframe_genre_year.reset_index()
+st.dataframe(dataframe_genre_year, width=600)
+
+
+st.write('## Top 10 Rated Movies in Rotten Tomatoes')
+movieRatings.rename(
+    columns={"Rotten Tomatoes": "RottenTomatoes"}, inplace=True)
+movieRatings['RottenTomatoes'] = movieRatings['RottenTomatoes'].fillna(
+    '0/100').apply(lambda x: int((x).split('/')[0]))
+top10movies = movieRatings.nlargest(10, ['RottenTomatoes'])
+st.bar_chart(x="Title", y="RottenTomatoes", data=top10movies)
