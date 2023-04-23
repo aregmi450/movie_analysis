@@ -27,7 +27,6 @@ year = st.selectbox('Choose a Year', year_list, 0)
 new_genre_year = (movieRatings['Age'].isin(new_age_list)) \
     & (movieRatings['Year'] == year)
 
-
 # visualization
 col1, col2 = st.columns(2)
 with col1:
