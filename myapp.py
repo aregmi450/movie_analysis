@@ -10,13 +10,14 @@ import streamlit as st
 movieRatings = pd.read_csv("tv_shows.csv", index_col=[0])
 
 # filling empty datasets
-
 movieRatings.Age = movieRatings.Age.fillna('all')
 
 # Creating sidebar widget unique values from our movies dataset
 age_list = movieRatings['Age'].unique().tolist()
 year_list = movieRatings['Year'].unique().tolist()
 
+st.title('Movie Dataset Analysis')
+st.markdown("This dashboard is prepared to show the analysis of movie dataset available on Kaggle. This dashboard helps you filter the movie according to the age group and the year of release")
 
 st.write("Select your preferred age group and type the year from which series you want to search: ")
 
